@@ -8,6 +8,7 @@ import {
 import './index.css'
 import Header from './Header.jsx';
 import Users from './Users.jsx';
+import Update from './Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
     element: <div><Header /><Users /></div>,
     loader: () => fetch('http://localhost:5000/users'),
   },
+  {
+    path: '/update/:id',
+    element: <div><Header /><Update /></div>,
+    loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

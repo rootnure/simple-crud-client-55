@@ -35,14 +35,19 @@ const Users = () => {
                     users.map(user => <div
                         key={user._id}
                         className="flex gap-5 justify-between"
-                    >{user.name} ({user.email})
+                    >
+                        <div>{user.name} ({user.email})</div>
+
                         <div className="flex gap-2">
+
                             <Link to={`/update/${user._id}`}>
                                 <button>Update</button>
                             </Link>
+
                             <button
                                 onClick={() => handleDelete(user._id)}
                             >Delete</button>
+
                         </div>
                     </div>)
                 }
