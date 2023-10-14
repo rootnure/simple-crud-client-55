@@ -20,6 +20,8 @@ function App() {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        alert(`User "${name}" inserted successfully`);
+        form.reset();
       })
   }
 
