@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const Users = () => {
@@ -30,13 +30,21 @@ const Users = () => {
     return (
         <div>
             <h2>Users: {users.length}</h2>
-            <div>
+            <div className="flex flex-col gap-2">
                 {
                     users.map(user => <div
                         key={user._id}
-                    >{user.name} ({user.email}) <button
-                        onClick={() => handleDelete(user._id)}
-                    >X</button></div>)
+                        className="flex gap-5 justify-between"
+                    >{user.name} ({user.email})
+                        <div className="flex gap-2">
+                            <Link to={`/update/${user._id}`}>
+                                <button>Update</button>
+                            </Link>
+                            <button
+                                onClick={() => handleDelete(user._id)}
+                            >Delete</button>
+                        </div>
+                    </div>)
                 }
             </div>
         </div>
